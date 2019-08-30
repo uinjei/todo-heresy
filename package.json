@@ -1,7 +1,7 @@
 {
-  "name": "test-heresy",
+  "name": "uinjei-github-page",
   "version": "1.0.0",
-  "description": "",
+  "description": "Github page for Edwin Jay Javier",
   "main": "index.js",
   "scripts": {
     "start": "rollup --config rollup.config.js --watch",
