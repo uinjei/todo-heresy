@@ -1,0 +1,29 @@
+{
+  "name": "test-heresy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "rollup --config rollup.config.js --watch",
+    "build": "rollup --config rollup.config.prod.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.10.2",
+    "bulma": "^0.7.5",
+    "heresy": "^0.15.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "postcss-simple-vars": "^5.0.2",
+    "rollup": "^1.20.3",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-serve": "^1.0.1",
+    "sass": "^1.22.10"
+  }
+}
