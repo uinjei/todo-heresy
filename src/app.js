@@ -11,13 +11,13 @@ const App = {
     },
     handleMenu(e) {
       this.querySelector(".section")
-          .setAttribute('active-page', e.target.text);
+          .setAttribute('active-page', e.target.id);
     },
     render() {
       this.html`
         <Header props="${{handleMenu: this.handleMenu}}"
-            class="navbar" role="navigation" aria-label="main navigation"/>
-        <Main class="section" active-page="Todo"/>
+            class="navbar is-fixed-top" role="navigation" aria-label="main navigation"/>
+        <Main class="section" active-page="home"/>
         <Footer class="footer"/>
       `;
     }

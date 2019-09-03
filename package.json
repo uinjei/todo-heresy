@@ -1,7 +1,7 @@
 {
   "name": "uinjei-github-page",
   "version": "1.0.0",
-  "description": "Github page for Edwin Jay Javier",
+  "description": "Github page for uinjei",
   "main": "index.js",
   "scripts": {
     "start": "rollup --config rollup.config.js --watch",

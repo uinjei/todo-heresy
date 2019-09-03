@@ -1,14 +1,23 @@
-import {ref, define} from 'heresy';
-import Box from "../components/box";
-import Todo from "../todo";
-import Login from "../login";
+import {define} from 'heresy';
+import About from "../about";
+import Contact from "../contact";
+import Projects from "../projects";
+import Home from "../home";
 
 /* initialize pages here */
-const todo = define('Todo', Todo).new();
-const login = define('Login', Login).new();
+const about = define('About', About).new();
+const contact = define('Contact', Contact).new();
+const projects = define('Porjects', Projects).new();
+const home = define('Home', Home).new();
+
+const page = {
+    about,
+    contact,
+    projects,
+    home
+};
 
 export default {
-    includes: {Box, Todo, Login},
     extends: 'section',
     observedAttributes: ['active-page'],
     onattributechanged(event = {attributeName, oldValue, newValue}) {
@@ -16,9 +25,9 @@ export default {
     },
     render() {
         const activePage = this.getAttribute('active-page');
-        const page = activePage==='Todo'?todo:login;
+        const aPage = page[activePage];
         this.html`
-            ${page}
+            ${aPage}
         `;
     }
 };

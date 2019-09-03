@@ -2207,14 +2207,6 @@
     }
   };
 
-  var ref = function ref(self, name) {
-    return self ? self[name] || (self[name] = {
-      current: null
-    }) : {
-      current: null
-    };
-  };
-
   var register = function register($, definition, uid) {
     var _customElements;
 
@@ -2331,7 +2323,7 @@
   };
 
   function _templateObject() {
-    var data = _taggedTemplateLiteral(["\n            <div class=\"navbar-brand\">\n                <a class=\"navbar-item\" href=\"https://bulma.io\">\n                <img src=\"https://bulma.io/images/bulma-logo.png\" width=\"112\" height=\"28\">\n                </a>\n\n                <a role=\"button\" class=\"navbar-burger burger\" aria-label=\"menu\" aria-expanded=\"false\" data-target=\"navbarBasicExample\">\n                <span aria-hidden=\"true\"></span>\n                <span aria-hidden=\"true\"></span>\n                <span aria-hidden=\"true\"></span>\n                </a>\n            </div>\n\n            <div id=\"navbarBasicExample\" class=\"navbar-menu\">\n                <div class=\"navbar-start\">\n                <a class=\"navbar-item\" onclick=\"", "\">Todo</a>\n\n                <a class=\"navbar-item\" onclick=\"", "\">Login</a>\n\n                <div class=\"navbar-item has-dropdown is-hoverable\">\n                    <a class=\"navbar-link\">\n                    More\n                    </a>\n\n                    <div class=\"navbar-dropdown\">\n                    <a class=\"navbar-item\">\n                        About\n                    </a>\n                    <a class=\"navbar-item\">\n                        Jobs\n                    </a>\n                    <a class=\"navbar-item\">\n                        Contact\n                    </a>\n                    <hr class=\"navbar-divider\">\n                    <a class=\"navbar-item\">\n                        Report an issue\n                    </a>\n                    </div>\n                </div>\n                </div>\n\n                <div class=\"navbar-end\">\n                <div class=\"navbar-item\">\n                    <div class=\"buttons\">\n                    <a class=\"button is-primary\">\n                        <strong>Sign up</strong>\n                    </a>\n                    <a class=\"button is-light\">\n                        Log in\n                    </a>\n                    </div>\n                </div>\n                </div>\n            </div>\n        "]);
+    var data = _taggedTemplateLiteral(["\n            <div class=\"navbar-brand\">\n                <a role=\"button\" class=\"navbar-burger burger\" aria-label=\"menu\" aria-expanded=\"false\" data-target=\"navbarBasicExample\">\n                <span aria-hidden=\"true\"></span>\n                <span aria-hidden=\"true\"></span>\n                <span aria-hidden=\"true\"></span>\n                </a>\n            </div>\n\n            <div id=\"navbarBasicExample\" class=\"navbar-menu\">\n                <div class=\"navbar-start\">\n                    <a class=\"navbar-item\" id=\"home\" onclick=\"", "\">Home</a>\n                    <a class=\"navbar-item\" id=\"projects\" onclick=\"", "\">Projects</a>\n                    <a class=\"navbar-item\" id=\"about\" onclick=\"", "\">About</a>\n                </div>\n\n                <div class=\"navbar-end\">\n                    <div class=\"navbar-item\">\n                        <div class=\"buttons\">\n                        <a class=\"button is-primary\" id=\"contact\" onclick=\"", "\">\n                            <strong>Contact Me</strong>\n                        </a>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        "]);
 
     _templateObject = function _templateObject() {
       return data;
@@ -2343,12 +2335,12 @@
   var Header = {
     "extends": 'nav',
     render: function render() {
-      this.html(_templateObject(), this.props.handleMenu, this.props.handleMenu);
+      this.html(_templateObject(), this.props.handleMenu, this.props.handleMenu, this.props.handleMenu, this.props.handleMenu);
     }
   };
 
   function _templateObject$1() {
-    var data = _taggedTemplateLiteral(["\n            ", "\n        "]);
+    var data = _taggedTemplateLiteral(["\n        <div>this is about</div>\n      "]);
 
     _templateObject$1 = function _templateObject() {
       return data;
@@ -2357,88 +2349,38 @@
     return data;
   }
 
-  var Box = {
+  var About = {
     "extends": 'div',
     oninit: function oninit() {
-      this.setAttribute('class', 'box');
+      this.setAttribute('class', 'content');
     },
     render: function render() {
-      this.html(_templateObject$1(), this.children);
+      this.html(_templateObject$1());
     }
   };
 
-  function _templateObject10() {
-    var data = _taggedTemplateLiteral(["\n                    <THead data=\"", "\"/>\n                    <TBody data=\"", "\"/>\n                "]);
+  function _templateObject$2() {
+    var data = _taggedTemplateLiteral(["\n        <div>this is contact</div>\n      "]);
 
-    _templateObject10 = function _templateObject10() {
+    _templateObject$2 = function _templateObject() {
       return data;
     };
 
     return data;
   }
 
-  function _templateObject9() {
-    var data = _taggedTemplateLiteral(["\n            ", "\n        "]);
-
-    _templateObject9 = function _templateObject9() {
-      return data;
-    };
-
-    return data;
-  }
-
-  function _templateObject8() {
-    var data = _taggedTemplateLiteral(["\n            <span class=\"icon\">\n                <i class=\"fas fa-spinner fa-pulse\"></i>\n            </span>\n            Loading please wait\n        "]);
-
-    _templateObject8 = function _templateObject8() {
-      return data;
-    };
-
-    return data;
-  }
-
-  function _templateObject7() {
-    var data = _taggedTemplateLiteral(["\n                        <Td data=\"", "\"/>\n                    "]);
-
-    _templateObject7 = function _templateObject7() {
-      return data;
-    };
-
-    return data;
-  }
-
-  function _templateObject6() {
-    var data = _taggedTemplateLiteral(["\n                <tr>\n                    ", "\n                </tr>\n                \n            "]);
-
-    _templateObject6 = function _templateObject6() {
-      return data;
-    };
-
-    return data;
-  }
-
-  function _templateObject5() {
-    var data = _taggedTemplateLiteral(["\n            ", "\n        "]);
-
-    _templateObject5 = function _templateObject5() {
-      return data;
-    };
-
-    return data;
-  }
-
-  function _templateObject4() {
-    var data = _taggedTemplateLiteral(["<Th data=\"", "\"/>"]);
-
-    _templateObject4 = function _templateObject4() {
-      return data;
-    };
-
-    return data;
-  }
+  var Contact = {
+    "extends": 'div',
+    oninit: function oninit() {
+      this.setAttribute('class', 'content');
+    },
+    render: function render() {
+      this.html(_templateObject$2());
+    }
+  };
 
   function _templateObject3() {
-    var data = _taggedTemplateLiteral(["\n            <tr>\n                ", "\n            </tr>\n        "]);
+    var data = _taggedTemplateLiteral(["\n                        <Item class=\"", "\"\n                            id=\"", "\"\n                            onclick=\"", "\"\n                            item=\"", "\"/>\n                        "]);
 
     _templateObject3 = function _templateObject3() {
       return data;
@@ -2448,7 +2390,7 @@
   }
 
   function _templateObject2() {
-    var data = _taggedTemplateLiteral(["", ""]);
+    var data = _taggedTemplateLiteral(["\n            <ul>\n                ", "\n            </ul>\n        "]);
 
     _templateObject2 = function _templateObject2() {
       return data;
@@ -2457,118 +2399,8 @@
     return data;
   }
 
-  function _templateObject$2() {
-    var data = _taggedTemplateLiteral(["", ""]);
-
-    _templateObject$2 = function _templateObject() {
-      return data;
-    };
-
-    return data;
-  }
-  var Th = {
-    "extends": 'th',
-    render: function render() {
-      var column = this.data.column;
-      this.html(_templateObject$2(), column);
-    }
-  };
-  var Td = {
-    "extends": 'td',
-    render: function render() {
-      var cell = this.data.cell;
-      this.html(_templateObject2(), cell);
-    }
-  };
-  var THead = {
-    "extends": 'thead',
-    includes: {
-      Th: Th
-    },
-    render: function render() {
-      var columns = this.data.columns;
-      this.html(_templateObject3(), columns.map(function (column) {
-        return html(_templateObject4(), {
-          column: column
-        });
-      }));
-    }
-  };
-  var TBody = {
-    "extends": 'tbody',
-    includes: {
-      Td: Td
-    },
-    render: function render() {
-      var rows = this.data.rows;
-      this.html(_templateObject5(), rows.map(function (row) {
-        return html(_templateObject6(), Object.values(row).map(function (cell) {
-          return html(_templateObject7(), {
-            cell: cell
-          });
-        }));
-      }));
-    }
-  };
-  var Table = {
-    "extends": 'table',
-    includes: {
-      THead: THead,
-      TBody: TBody
-    },
-    oninit: function oninit() {
-      var _this = this;
-
-      this.setAttribute('class', 'table');
-      this.state = {
-        loading: true,
-        rows: []
-      };
-      var populator = this.data.populator;
-      populator().then(function (json) {
-        var data = json.results;
-        _this.state.loading = false;
-        _this.state.columns = Object.keys(data[0]);
-        _this.state.rows = data;
-
-        _this.render();
-      })["catch"](function (e) {
-        return console.log('there was an error retrieving: ', e);
-      });
-    },
-    render: function render() {
-      var _this$state = this.state,
-          loading = _this$state.loading,
-          rows = _this$state.rows,
-          columns = _this$state.columns; //const { columns } = this.data;
-
-      var loader = html(_templateObject8());
-      this.html(_templateObject9(), loading ? loader : html(_templateObject10(), {
-        columns: columns
-      }, {
-        rows: rows
-      }));
-    }
-  };
-
-  var userService = {
-    findAll: function findAll() {
-      var headers = new Headers({
-        'X-Parse-Application-Id': 'A9lBJIHufJO5Bbs6Hwdxhny0IcHV5J1KFbHK9kCo',
-        'X-Parse-REST-API-Key': 'yjqy3Q3oYrmS5mxE7M0bQE97R51Qj88R3Ah82ujx'
-      });
-      var fetchData = {
-        method: 'GET',
-        headers: headers
-      };
-      return fetch('https://parseapi.back4app.com/classes/Todo', fetchData).then(function (response) {
-        return response.json();
-      });
-    }
-  };
-
   function _templateObject$3() {
-    var data = _taggedTemplateLiteral(["\n            <Box><Table data=\"", "\"/></Box>\n        "]);
+    var data = _taggedTemplateLiteral(["\n            <a>", "</a>\n        "]);
 
     _templateObject$3 = function _templateObject() {
       return data;
@@ -2576,39 +2408,43 @@
 
     return data;
   }
-  var Todo = {
-    includes: {
-      Table: Table,
-      Box: Box
-    },
-    "extends": 'div',
-    oninit: function oninit() {
-      this.setAttribute('class', 'content');
+  var Item = {
+    "extends": 'li',
+    observedAttributes: ['class', 'item'],
+    onattributechanged: function onattributechanged() {
+      this.render();
     },
     render: function render() {
-      var columns = ['id', 'name', 'username'];
-      this.html(_templateObject$3(), {
-        columns: columns,
-        populator: userService.findAll
-      });
+      this.html(_templateObject$3(), this.item);
     }
   };
+  var Tabs = {
+    "extends": 'div',
+    includes: {
+      Item: Item
+    },
+    oninit: function oninit() {
+      this.setAttribute('class', 'tabs');
+      this.handleActive = this.handleActive.bind(this);
+      this.state = {
+        active: 0
+      };
+    },
+    handleActive: function handleActive(e) {
+      this.state.active = e.target.parentElement.id;
+      this.render();
+    },
+    render: function render() {
+      var _this = this;
 
-  var User = {
-    "extends": 'input',
-    oninit: function oninit() {
-      if (!this.name) this.name = 'user';
-    }
-  };
-  var Pass = {
-    "extends": 'input',
-    oninit: function oninit() {
-      this.type = 'password';
+      this.html(_templateObject2(), this.data.items.map(function (item, idx) {
+        return html(_templateObject3(), idx == _this.state.active ? 'is-active' : '', idx, _this.handleActive, item);
+      }));
     }
   };
 
   function _templateObject$4() {
-    var data = _taggedTemplateLiteral(["\n    <label>Your name: <User ref=", " name=\"user\"></label>\n    <label>Your pass: <Pass ref=", " name=\"pass\"></label>\n    "]);
+    var data = _taggedTemplateLiteral(["\n        <div class=\"content\">\n          <h3>A collection of my projects here in github.</h3>\n          <p>\n            Lorem ipsum dolor\n          </p>\n          <Tabs data=\"", "\"/>  \n        </div>\n      "]);
 
     _templateObject$4 = function _templateObject() {
       return data;
@@ -2616,31 +2452,24 @@
 
     return data;
   }
-
-  var Login = {
-    "extends": 'form',
+  var Projects = {
+    "extends": 'div',
     includes: {
-      User: User,
-      Pass: Pass
+      Tabs: Tabs
     },
     oninit: function oninit() {
-      // refs can be declared upfront or inline (see render)
-      this.user = ref();
-      this.addEventListener('submit', this);
+      this.setAttribute('class', 'container');
     },
-    onsubmit: function onsubmit(event) {
-      event.preventDefault(); //if (validate(this.user.current, this.pass.current))
-      //fetch('/log-in').then(switchPage).catch(console.error);
-    },
-    // render is invoked automatically on connected
-    // if no connected, or callback is explicitly defined
     render: function render() {
-      this.html(_templateObject$4(), this.user, ref(this, 'pass'));
+      var items = ['bulma-heresy-table', 'bulma-heresy-tabs'];
+      this.html(_templateObject$4(), {
+        items: items
+      });
     }
   };
 
   function _templateObject$5() {
-    var data = _taggedTemplateLiteral(["\n            ", "\n        "]);
+    var data = _taggedTemplateLiteral(["\n        <div class=\"content\">\n            <h3>My official Github page.</h3>\n            <p>\n              Lorem ipsum dolor\n            </p>\n        </div>\n      "]);
 
     _templateObject$5 = function _templateObject() {
       return data;
@@ -2648,16 +2477,39 @@
 
     return data;
   }
+
+  var Home = {
+    "extends": 'div',
+    oninit: function oninit() {
+      this.setAttribute('class', 'container');
+    },
+    render: function render() {
+      this.html(_templateObject$5());
+    }
+  };
+
+  function _templateObject$6() {
+    var data = _taggedTemplateLiteral(["\n            ", "\n        "]);
+
+    _templateObject$6 = function _templateObject() {
+      return data;
+    };
+
+    return data;
+  }
   /* initialize pages here */
 
-  var todo = define('Todo', Todo)["new"]();
-  var login = define('Login', Login)["new"]();
+  var about = define('About', About)["new"]();
+  var contact = define('Contact', Contact)["new"]();
+  var projects = define('Porjects', Projects)["new"]();
+  var home = define('Home', Home)["new"]();
+  var page = {
+    about: about,
+    contact: contact,
+    projects: projects,
+    home: home
+  };
   var Main = {
-    includes: {
-      Box: Box,
-      Todo: Todo,
-      Login: Login
-    },
     "extends": 'section',
     observedAttributes: ['active-page'],
     onattributechanged: function onattributechanged() {
@@ -2665,15 +2517,15 @@
     },
     render: function render() {
       var activePage = this.getAttribute('active-page');
-      var page = activePage === 'Todo' ? todo : login;
-      this.html(_templateObject$5(), page);
+      var aPage = page[activePage];
+      this.html(_templateObject$6(), aPage);
     }
   };
 
-  function _templateObject$6() {
-    var data = _taggedTemplateLiteral(["\n            <div class=\"content has-text-centered\">\n                <p>Made with \u2764\uFE0F by <strong>uinjei</strong>\n                special thanks to <a href=\"https://github.com/jgthms/bulma\"><strong>Bulma</strong></a> and <a href=\"https://github.com/WebReflection/heresy\"><strong>Heresy</strong></a>.\n                </p>\n            </div>\n        "]);
+  function _templateObject$7() {
+    var data = _taggedTemplateLiteral(["\n            <div class=\"content has-text-centered\">\n                <p>Made with \u2764\uFE0F by <strong>uinjei</strong>\n                <p>\n                Special thanks to <a href=\"https://github.com/jgthms/bulma\">\n                    <strong>Bulma</strong></a> and \n                    <a href=\"https://github.com/WebReflection/heresy\"><strong>Heresy</strong></a>.\n                </p>\n                </p>\n            </div>\n        "]);
 
-    _templateObject$6 = function _templateObject() {
+    _templateObject$7 = function _templateObject() {
       return data;
     };
 
@@ -2683,7 +2535,7 @@
   var Footer = {
     "extends": 'footer',
     render: function render() {
-      this.html(_templateObject$6());
+      this.html(_templateObject$7());
     }
   };
 
@@ -2729,10 +2581,10 @@
     return data;
   }
 
-  function _templateObject$7() {
-    var data = _taggedTemplateLiteral(["\n        <Header props=\"", "\"\n            class=\"navbar\" role=\"navigation\" aria-label=\"main navigation\"/>\n        <Main class=\"section\" active-page=\"Todo\"/>\n        <Footer class=\"footer\"/>\n      "]);
+  function _templateObject$8() {
+    var data = _taggedTemplateLiteral(["\n        <Header props=\"", "\"\n            class=\"navbar is-fixed-top\" role=\"navigation\" aria-label=\"main navigation\"/>\n        <Main class=\"section\" active-page=\"home\"/>\n        <Footer class=\"footer\"/>\n      "]);
 
-    _templateObject$7 = function _templateObject() {
+    _templateObject$8 = function _templateObject() {
       return data;
     };
 
@@ -2748,10 +2600,10 @@
       this.handleMenu = this.handleMenu.bind(this);
     },
     handleMenu: function handleMenu(e) {
-      this.querySelector(".section").setAttribute('active-page', e.target.text);
+      this.querySelector(".section").setAttribute('active-page', e.target.id);
     },
     render: function render() {
-      this.html(_templateObject$7(), {
+      this.html(_templateObject$8(), {
         handleMenu: this.handleMenu
       });
     }
