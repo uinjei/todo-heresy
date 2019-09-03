@@ -2207,6 +2207,14 @@
     }
   };
 
+  var ref = function ref(self, name) {
+    return self ? self[name] || (self[name] = {
+      current: null
+    }) : {
+      current: null
+    };
+  };
+
   var register = function register($, definition, uid) {
     var _customElements;
 
@@ -2323,7 +2331,7 @@
   };
 
   function _templateObject() {
-    var data = _taggedTemplateLiteral(["\n            <div class=\"navbar-brand\">\n                <a role=\"button\" class=\"navbar-burger burger\" aria-label=\"menu\" aria-expanded=\"false\" data-target=\"navbarBasicExample\">\n                <span aria-hidden=\"true\"></span>\n                <span aria-hidden=\"true\"></span>\n                <span aria-hidden=\"true\"></span>\n                </a>\n            </div>\n\n            <div id=\"navbarBasicExample\" class=\"navbar-menu\">\n                <div class=\"navbar-start\">\n                    <a class=\"navbar-item\" id=\"home\" onclick=\"", "\">Home</a>\n                    <a class=\"navbar-item\" id=\"projects\" onclick=\"", "\">Projects</a>\n                    <a class=\"navbar-item\" id=\"about\" onclick=\"", "\">About</a>\n                </div>\n\n                <div class=\"navbar-end\">\n                    <div class=\"navbar-item\">\n                        <div class=\"buttons\">\n                        <a class=\"button is-primary\" id=\"contact\" onclick=\"", "\">\n                            <strong>Contact Me</strong>\n                        </a>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        "]);
+    var data = _taggedTemplateLiteral(["\n            <div class=\"navbar-brand\">\n                <a role=\"button\" class=\"navbar-burger burger\" aria-label=\"menu\" aria-expanded=\"false\" data-target=\"navbarBasicExample\">\n                <span aria-hidden=\"true\"></span>\n                <span aria-hidden=\"true\"></span>\n                <span aria-hidden=\"true\"></span>\n                </a>\n            </div>\n\n            <div id=\"navbarBasicExample\" class=\"navbar-menu\">\n                <div class=\"navbar-start\">\n                    <a class=\"navbar-item\" id=\"home\">Home</a>\n                    <a class=\"navbar-item\" id=\"projects\">Projects</a>\n                    <a class=\"navbar-item\" id=\"about\">About</a>\n                </div>\n\n                <div class=\"navbar-end\">\n                    <div class=\"navbar-item\">\n                        <div class=\"buttons\">\n                        <a class=\"button is-primary\" id=\"contact\">\n                            <strong>Contact Me</strong>\n                        </a>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        "]);
 
     _templateObject = function _templateObject() {
       return data;
@@ -2335,7 +2343,7 @@
   var Header = {
     "extends": 'nav',
     render: function render() {
-      this.html(_templateObject(), this.props.handleMenu, this.props.handleMenu, this.props.handleMenu, this.props.handleMenu);
+      this.html(_templateObject());
     }
   };
 
@@ -2351,6 +2359,7 @@
 
   var About = {
     "extends": 'div',
+    name: 'About',
     oninit: function oninit() {
       this.setAttribute('class', 'content');
     },
@@ -2380,7 +2389,7 @@
   };
 
   function _templateObject3() {
-    var data = _taggedTemplateLiteral(["\n                        <Item class=\"", "\"\n                            id=\"", "\"\n                            onclick=\"", "\"\n                            item=\"", "\"/>\n                        "]);
+    var data = _taggedTemplateLiteral(["<Item idx=\"", "\" class=\"", "\" text=\"", "\" onclick=\"", "\"/>"]);
 
     _templateObject3 = function _templateObject3() {
       return data;
@@ -2390,7 +2399,7 @@
   }
 
   function _templateObject2() {
-    var data = _taggedTemplateLiteral(["\n            <ul>\n                ", "\n            </ul>\n        "]);
+    var data = _taggedTemplateLiteral(["\n            <ul ref=", ">\n                ", "\n            </ul>\n        "]);
 
     _templateObject2 = function _templateObject2() {
       return data;
@@ -2400,7 +2409,7 @@
   }
 
   function _templateObject$3() {
-    var data = _taggedTemplateLiteral(["\n            <a>", "</a>\n        "]);
+    var data = _taggedTemplateLiteral(["\n            <a id=\"", "\">", "</a>\n        "]);
 
     _templateObject$3 = function _templateObject() {
       return data;
@@ -2410,12 +2419,12 @@
   }
   var Item = {
     "extends": 'li',
-    observedAttributes: ['class', 'item'],
+    observedAttributes: ['class', 'text', 'idx'],
     onattributechanged: function onattributechanged() {
       this.render();
     },
     render: function render() {
-      this.html(_templateObject$3(), this.item);
+      this.html(_templateObject$3(), this.idx, this.text);
     }
   };
   var Tabs = {
@@ -2424,21 +2433,20 @@
       Item: Item
     },
     oninit: function oninit() {
-      this.setAttribute('class', 'tabs');
-      this.handleActive = this.handleActive.bind(this);
-      this.state = {
-        active: 0
-      };
+      this.setAttribute('class', 'tabs is-boxed');
     },
-    handleActive: function handleActive(e) {
-      this.state.active = e.target.parentElement.id;
-      this.render();
+    onclick: function onclick(e) {
+      var list = Array.from(this.list.current.children);
+      list.map(function (item) {
+        return item.removeAttribute('class');
+      });
+      list[e.target.id].setAttribute('class', 'is-active');
     },
     render: function render() {
       var _this = this;
 
-      this.html(_templateObject2(), this.data.items.map(function (item, idx) {
-        return html(_templateObject3(), idx == _this.state.active ? 'is-active' : '', idx, _this.handleActive, item);
+      this.html(_templateObject2(), ref(this, 'list'), this.data.items.map(function (item, idx) {
+        return html(_templateObject3(), idx, item.active, item.name, _this);
       }));
     }
   };
@@ -2461,7 +2469,12 @@
       this.setAttribute('class', 'container');
     },
     render: function render() {
-      var items = ['bulma-heresy-table', 'bulma-heresy-tabs'];
+      var items = [{
+        name: 'bulma-heresy-table',
+        active: 'is-active'
+      }, {
+        name: 'bulma-heresy-tabs'
+      }];
       this.html(_templateObject$4(), {
         items: items
       });
@@ -2499,15 +2512,11 @@
   }
   /* initialize pages here */
 
-  var about = define('About', About)["new"]();
-  var contact = define('Contact', Contact)["new"]();
-  var projects = define('Porjects', Projects)["new"]();
-  var home = define('Home', Home)["new"]();
   var page = {
-    about: about,
-    contact: contact,
-    projects: projects,
-    home: home
+    about: define(About)["new"](),
+    contact: define('Contact', Contact)["new"](),
+    projects: define('Projects', Projects)["new"](),
+    home: define('Home', Home)["new"]()
   };
   var Main = {
     "extends": 'section',
@@ -2582,7 +2591,7 @@
   }
 
   function _templateObject$8() {
-    var data = _taggedTemplateLiteral(["\n        <Header props=\"", "\"\n            class=\"navbar is-fixed-top\" role=\"navigation\" aria-label=\"main navigation\"/>\n        <Main class=\"section\" active-page=\"home\"/>\n        <Footer class=\"footer\"/>\n      "]);
+    var data = _taggedTemplateLiteral(["\n        <Header onclick=\"", "\" class=\"navbar is-fixed-top\" role=\"navigation\" aria-label=\"main navigation\"/>\n        <Main class=\"section\" active-page=\"home\" ref=", "/>\n        <Footer class=\"footer\"/>\n      "]);
 
     _templateObject$8 = function _templateObject() {
       return data;
@@ -2596,16 +2605,11 @@
       Main: Main,
       Footer: Footer
     },
-    oninit: function oninit() {
-      this.handleMenu = this.handleMenu.bind(this);
-    },
-    handleMenu: function handleMenu(e) {
-      this.querySelector(".section").setAttribute('active-page', e.target.id);
+    onclick: function onclick(e) {
+      if (e.target.id) this.main.current.setAttribute("active-page", e.target.id);
     },
     render: function render() {
-      this.html(_templateObject$8(), {
-        handleMenu: this.handleMenu
-      });
+      this.html(_templateObject$8(), this, ref(this, 'main'));
     }
   };
   define('App', App);

@@ -5,16 +5,11 @@ import Projects from "../projects";
 import Home from "../home";
 
 /* initialize pages here */
-const about = define('About', About).new();
-const contact = define('Contact', Contact).new();
-const projects = define('Porjects', Projects).new();
-const home = define('Home', Home).new();
-
 const page = {
-    about,
-    contact,
-    projects,
-    home
+    about: define(About).new(),
+    contact: define('Contact', Contact).new(),
+    projects: define('Projects', Projects).new(),
+    home: define('Home', Home).new()
 };
 
 export default {

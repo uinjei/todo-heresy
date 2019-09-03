@@ -6,18 +6,14 @@ import "./app.scss";
 
 const App = {
     includes: {Header, Main, Footer},
-    oninit() {
-      this.handleMenu = this.handleMenu.bind(this);
-    },
-    handleMenu(e) {
-      this.querySelector(".section")
-          .setAttribute('active-page', e.target.id);
+    onclick(e) {
+      if (e.target.id)
+        this.main.current.setAttribute("active-page", e.target.id);
     },
     render() {
       this.html`
-        <Header props="${{handleMenu: this.handleMenu}}"
-            class="navbar is-fixed-top" role="navigation" aria-label="main navigation"/>
-        <Main class="section" active-page="home"/>
+        <Header onclick="${this}" class="navbar is-fixed-top" role="navigation" aria-label="main navigation"/>
+        <Main class="section" active-page="home" ref=${ref(this, 'main')}/>
         <Footer class="footer"/>
       `;
     }

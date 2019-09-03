@@ -12,15 +12,15 @@ export default {
 
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item" id="home" onclick="${this.props.handleMenu}">Home</a>
-                    <a class="navbar-item" id="projects" onclick="${this.props.handleMenu}">Projects</a>
-                    <a class="navbar-item" id="about" onclick="${this.props.handleMenu}">About</a>
+                    <a class="navbar-item" id="home">Home</a>
+                    <a class="navbar-item" id="projects">Projects</a>
+                    <a class="navbar-item" id="about">About</a>
                 </div>
 
                 <div class="navbar-end">
                     <div class="navbar-item">
                         <div class="buttons">
-                        <a class="button is-primary" id="contact" onclick="${this.props.handleMenu}">
+                        <a class="button is-primary" id="contact">
                             <strong>Contact Me</strong>
                         </a>
                         </div>

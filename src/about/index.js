@@ -1,5 +1,6 @@
 export default {
     extends: 'div',
+    name: 'About',
     oninit() {
         this.setAttribute('class', 'content');
     },

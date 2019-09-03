@@ -7,8 +7,13 @@ export default {
     },
     render() {
       const items = [
-        'bulma-heresy-table',
-        'bulma-heresy-tabs'
+        {
+          name: 'bulma-heresy-table',
+          active: 'is-active'
+        },
+        {
+          name: 'bulma-heresy-tabs'
+        }
       ]
       
       this.html`

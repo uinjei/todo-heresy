@@ -1,40 +1,34 @@
-import {html} from "heresy";
+import {html,ref} from "heresy";
 
 const Item = {
     extends: 'li',
-    observedAttributes: ['class', 'item'],
+    observedAttributes: ['class', 'text', 'idx'],
     onattributechanged(event = {attributeName, oldValue, newValue}) {
         this.render();
     },
     render() {
         this.html`
-            <a>${this.item}</a>
+            <a id="${this.idx}">${this.text}</a>
         `;
     }
-}
+};
 
 export default {
     extends: 'div',
     includes: {Item},
     oninit() {
-        this.setAttribute('class', 'tabs');
-        this.handleActive = this.handleActive.bind(this);
-        this.state = {active: 0};
+        this.setAttribute('class', 'tabs is-boxed');
     },
-    handleActive(e) {
-        this.state.active = e.target.parentElement.id;
-        this.render();
+    onclick(e) {
+        const list = Array.from(this.list.current.children); 
+        list.map(item => item.removeAttribute('class'));
+        list[e.target.id].setAttribute('class', 'is-active');
     },
     render() {
         this.html`
-            <ul>
-                ${this.data.items.map((item, idx) => 
-                    html`
-                        <Item class="${idx==this.state.active?'is-active':''}"
-                            id="${idx}"
-                            onclick="${this.handleActive}"
-                            item="${item}"/>
-                        `
+            <ul ref=${ref(this, 'list')}>
+                ${this.data.items.map((item, idx) =>
+                    html`<Item idx="${idx}" class="${item.active}" text="${item.name}" onclick="${this}"/>`
                 )}
             </ul>
         `;
